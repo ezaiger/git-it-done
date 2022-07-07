@@ -4,15 +4,15 @@ var limitWarningEl = document.querySelector("#limit-warning");
 
 // retrieve repository name
 var getRepoName = function () {
+
     // grab repo name from url query string
     var queryString = document.location.search;
     var repoName = queryString.split("=")[1];
-    // getRepoIssues(repoName);
-    // repoNameEl.textContent = repoName;
 
     if (repoName) {
         // display repo name on the page
         repoNameEl.textContent = repoName;
+
         getRepoIssues(repoName);
     } else {
         // if no repo was given, redirect to the homepage
@@ -44,13 +44,13 @@ var getRepoIssues = function (repo) {
 };
 
 // display respository issues
-var displayIssues = function(issues) {
+var displayIssues = function (issues) {
     if (issues.length === 0) {
         issueContainerEl.textContent = "This repo has no open issues!";
         return;
     }
     // loop over given issues
-    for (var i=0; i < issues.length; i++) {
+    for (var i = 0; i < issues.length; i++) {
         // create a link element to take users to the issue on github
         var issueEl = document.createElement("a");
         issueEl.classList = "list-item flex-row justify-space-between align-center";
@@ -76,7 +76,7 @@ var displayIssues = function(issues) {
     }
 };
 
-var displayWarning = function(repo) {
+var displayWarning = function (repo) {
     // add text to warning container
     limitWarningEl.textContent = "To see more than 30 issues, visit ";
     var linkEl = document.createElement("a");
@@ -87,5 +87,4 @@ var displayWarning = function(repo) {
     limitWarningEl.appendChild(linkEl);
 };
 
-getRepoIssues();
 getRepoName();
